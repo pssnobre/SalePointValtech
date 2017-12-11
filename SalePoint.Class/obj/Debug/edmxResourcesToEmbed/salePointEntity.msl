@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sale_pointModelStoreContainer" CdmEntityContainer="sale_pointEntities">
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="sale_pointModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="cat_ds_categoria" ColumnName="cat_ds_categoria" />
+          <ScalarProperty Name="cat_id_categoria" ColumnName="cat_id_categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="forma_pagamento">
+      <EntityTypeMapping TypeName="sale_pointModel.forma_pagamento">
+        <MappingFragment StoreEntitySet="forma_pagamento">
+          <ScalarProperty Name="pgt_ds_forma_pagamento" ColumnName="pgt_ds_forma_pagamento" />
+          <ScalarProperty Name="pgt_id_forma_pagamento" ColumnName="pgt_id_forma_pagamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto">
+      <EntityTypeMapping TypeName="sale_pointModel.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="pro_ds_preco" ColumnName="pro_ds_preco" />
+          <ScalarProperty Name="pro_id_categoria" ColumnName="pro_id_categoria" />
+          <ScalarProperty Name="pro_ds_produto" ColumnName="pro_ds_produto" />
+          <ScalarProperty Name="pro_id_produto" ColumnName="pro_id_produto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

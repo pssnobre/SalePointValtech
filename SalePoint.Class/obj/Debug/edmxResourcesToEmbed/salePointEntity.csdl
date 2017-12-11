@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sale_pointModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="sale_pointEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categoria" EntityType="sale_pointModel.categoria" />
+    <EntitySet Name="forma_pagamento" EntityType="sale_pointModel.forma_pagamento" />
+    <EntitySet Name="produto" EntityType="sale_pointModel.produto" />
+    <AssociationSet Name="FK_produto_categoria" Association="sale_pointModel.FK_produto_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="cat_id_categoria" />
+    </Key>
+    <Property Name="cat_id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_ds_categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="sale_pointModel.FK_produto_categoria" FromRole="categoria" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="forma_pagamento">
+    <Key>
+      <PropertyRef Name="pgt_id_forma_pagamento" />
+    </Key>
+    <Property Name="pgt_id_forma_pagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pgt_ds_forma_pagamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="pro_id_produto" />
+    </Key>
+    <Property Name="pro_id_produto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_ds_produto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pro_id_categoria" Type="Int32" Nullable="false" />
+    <Property Name="pro_ds_preco" Type="Double" Nullable="false" />
+    <NavigationProperty Name="categoria" Relationship="sale_pointModel.FK_produto_categoria" FromRole="produto" ToRole="categoria" />
+  </EntityType>
+  <Association Name="FK_produto_categoria">
+    <End Type="sale_pointModel.categoria" Role="categoria" Multiplicity="1" />
+    <End Type="sale_pointModel.produto" Role="produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="cat_id_categoria" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="pro_id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

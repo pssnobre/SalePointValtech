@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalePoint", "SalePoint\SalePoint.csproj", "{56C99F60-7AE4-4CB8-B75C-EC1D572374EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalePoint.Class", "SalePoint.Class\SalePoint.Class.csproj", "{5B4BDD33-AEE2-453D-9862-8E3214F076EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56C99F60-7AE4-4CB8-B75C-EC1D572374EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C99F60-7AE4-4CB8-B75C-EC1D572374EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C99F60-7AE4-4CB8-B75C-EC1D572374EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C99F60-7AE4-4CB8-B75C-EC1D572374EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4BDD33-AEE2-453D-9862-8E3214F076EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4BDD33-AEE2-453D-9862-8E3214F076EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4BDD33-AEE2-453D-9862-8E3214F076EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4BDD33-AEE2-453D-9862-8E3214F076EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

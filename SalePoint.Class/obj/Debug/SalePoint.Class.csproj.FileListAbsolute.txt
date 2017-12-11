@@ -1,0 +1,8 @@
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\bin\Debug\SalePoint.Class.dll.config
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\bin\Debug\SalePoint.Class.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\bin\Debug\SalePoint.Class.pdb
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\bin\Debug\EntityFramework.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\bin\Debug\EntityFramework.xml
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\obj\Debug\SalePoint.Class.csprojResolveAssemblyReference.cache
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\obj\Debug\SalePoint.Class.dll
+c:\users\paulo.nobre.topos\documents\visual studio 2015\Projects\SalePoint\SalePoint.Class\obj\Debug\SalePoint.Class.pdb

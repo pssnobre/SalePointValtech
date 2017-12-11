@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sale_pointModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="cat_id_categoria" />
+    </Key>
+    <Property Name="cat_id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_ds_categoria" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="forma_pagamento">
+    <Key>
+      <PropertyRef Name="pgt_id_forma_pagamento" />
+    </Key>
+    <Property Name="pgt_id_forma_pagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pgt_ds_forma_pagamento" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="pro_id_produto" />
+    </Key>
+    <Property Name="pro_id_produto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_ds_produto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pro_id_categoria" Type="int" Nullable="false" />
+    <Property Name="pro_ds_preco" Type="double" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_produto_categoria">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="cat_id_categoria" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="pro_id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sale_pointModelStoreContainer">
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="sale_point" store:Type="Tables" />
+    <EntitySet Name="forma_pagamento" EntityType="Self.forma_pagamento" Schema="sale_point" store:Type="Tables" />
+    <EntitySet Name="produto" EntityType="Self.produto" Schema="sale_point" store:Type="Tables" />
+    <AssociationSet Name="FK_produto_categoria" Association="Self.FK_produto_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

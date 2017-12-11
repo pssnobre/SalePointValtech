@@ -1,0 +1,37 @@
+﻿@model SalePoint.Models.ProductModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+@using (Html.BeginForm("Save", "Product"))
+{
+
+    <h2>New</h2>
+
+    <div class="row">
+        @Html.HiddenFor(model => model.productId)
+
+        <div class="col-md-4">
+            <h3 class="panel-title">Product Description</h3>
+            @Html.TextBoxFor(model => model.productDescription, new { @class = "form-control", @required = "required", @maxlength = "20" })
+        </div>
+        <div class="col-md-4">
+            <h3 class="panel-title">Product Price</h3>
+            @Html.TextBoxFor(model => model.productPrice, new { @class = "form-control money", @required = "required", @maxlength = "10" })
+        </div>
+        <div class="col-md-4">
+            <h3 class="panel-title">Product Category</h3>
+            @Html.DropDownListFor(model => model.categoryId, (SelectList)ViewBag.ProductCategories, "Selecione...", new { @class = "form-control", @required = "required" })
+        </div>
+
+    </div>
+
+    <p>
+        <button class="btn-success">Save</button>
+        @Html.ActionLink("Back", "Index")
+    </p>
+
+    
+    
+}

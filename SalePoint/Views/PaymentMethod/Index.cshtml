@@ -1,0 +1,40 @@
+﻿@model SalePoint.Models.PaymentMethodModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Payment Method</h2>
+
+<p>
+    @Html.ActionLink("New Payment Method", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Payment Method Id
+        </th>
+        <th>
+            Payment Method Description
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.paymentMethodList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentMethodId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentMethodDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.paymentMethodId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.paymentMethodId })
+            </td>
+        </tr>
+    }
+
+</table>
