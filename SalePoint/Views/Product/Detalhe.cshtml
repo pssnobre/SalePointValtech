@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-4">
             <h3 class="panel-title">Product Price</h3>
-            @Html.TextBoxFor(model => model.productPrice, new { @class = "form-control money", @required = "required", @maxlength = "10" })
+            @Html.TextBoxFor(model => model.productPrice, new { @class = "form-control", @required = "required", @step = "0.01", @type = "number", @min = "0", @maxlength = "10" })
         </div>
         <div class="col-md-4">
             <h3 class="panel-title">Product Category</h3>
@@ -32,6 +32,9 @@
         @Html.ActionLink("Back", "Index")
     </p>
 
-    
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
 }

@@ -9,10 +9,11 @@ namespace SalePoint.Controllers
 {
     public class ProductController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string msg)
         {
             ProductModel model = new ProductModel();
             model.productList = ProductModel.List();
+            ViewBag.Script = msg;
             return View("Index", model);
         }
 
@@ -32,15 +33,18 @@ namespace SalePoint.Controllers
 
         public ActionResult Delete(int id)
         {
-            ProductModel.Delete(id);
-            return Index();
+            if (!ProductModel.Delete(id))
+            {
+                return Index("You can not delete. Product used in current session.");
+            }
+            return Index("");
         }
 
         public ActionResult Save(ProductModel productObj)
         {
             if (ProductModel.Save(productObj))
             {
-                return Index();
+                return Index("");
             }
             else
             {

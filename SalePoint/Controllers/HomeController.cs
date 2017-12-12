@@ -30,11 +30,13 @@ namespace SalePoint.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult CloseBuyingSession()
+        public ActionResult CloseBuyingSession(BuyingSessionModel buyingSessionObj)
         {
-            BuyingSessionModel.CloseBuyingSession();
-            return Index("Session closed with success!");
-            
+            //if (buyingSessionObj.paymentId == 0)
+            //{
+            //    return Index("Please chose some payment method.");
+            //}
+            return BuyingSessionModel.CloseBuyingSession() ? Index("Session closed with sucess!") : Index("You can not close a session without products.");
         }
     }
 }

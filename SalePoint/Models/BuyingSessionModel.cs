@@ -22,7 +22,7 @@ namespace SalePoint.Models
             sale_pointEntities db = new sale_pointEntities();
             ProductModel productObj = ProductModel.GetProductModel(produtcId);
             objBuyingSession.sessionProductsListlist.Add(productObj);
-            objBuyingSession.totalValue += productObj.productPrice;
+            objBuyingSession.totalValue += double.Parse(productObj.productPrice);
             objBuyingSession.totalValue = Math.Round(objBuyingSession.totalValue, 2);
             return RecordBuyingSession(objBuyingSession);
         }
@@ -34,14 +34,19 @@ namespace SalePoint.Models
             if (productObj != null)
             {
                 objBuyingSession.sessionProductsListlist.Remove(productObj);
-                objBuyingSession.totalValue -= productObj.productPrice;
+                objBuyingSession.totalValue -= double.Parse(productObj.productPrice);
                 objBuyingSession.totalValue = Math.Round(objBuyingSession.totalValue, 2);
             }
             return RecordBuyingSession(objBuyingSession);
         }
-        public static BuyingSessionModel CloseBuyingSession()
+        public static bool CloseBuyingSession()
         {
-            return NewBuyingSession();
+            if (GetBuyingSession().sessionProductsListlist.Count == 0)
+            {
+                return false;
+            }
+            NewBuyingSession();
+            return true;
         }
 
         public static BuyingSessionModel RecordBuyingSession(BuyingSessionModel objBuyingSession)

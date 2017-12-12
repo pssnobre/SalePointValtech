@@ -10,10 +10,11 @@ namespace SalePoint.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(string msg)
         {
             CategoryModel model = new CategoryModel();
             model.categoryList = CategoryModel.List();
+            ViewBag.Script = msg;
             return View("Index", model);
         }
 
@@ -31,15 +32,18 @@ namespace SalePoint.Controllers
 
         public ActionResult Delete(int id)
         {
-            CategoryModel.Delete(id);
-            return Index();
+            if (!CategoryModel.Delete(id))
+            {
+                return Index("You can not delete. Category associated with a product.");
+            }            
+            return Index("");
         }
 
         public ActionResult Save(CategoryModel categoryObj)
         {
             if (CategoryModel.Save(categoryObj))
             {
-                return Index();
+                return Index("");
             }
             else
             {

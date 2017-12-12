@@ -1,4 +1,5 @@
 ﻿using SalePoint.Class;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -43,7 +44,14 @@ namespace SalePoint.Models
         {
             sale_pointEntities db = new sale_pointEntities();
             db.categoria.Where(x => x.cat_id_categoria == id).ToList().ForEach(y => db.categoria.Remove(y));
-            return db.SaveChanges() > 0;
+            try
+            {
+                return db.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public static bool Save(CategoryModel categoryObj)

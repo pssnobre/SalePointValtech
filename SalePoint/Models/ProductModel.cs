@@ -12,7 +12,7 @@ namespace SalePoint.Models
         public int productId { get; set; }
         public string productDescription { get; set; }
         public List<ProductModel> productList { get; set; }
-        public double productPrice { get; set; }
+        public string productPrice { get; set; }
         public int categoryId { get; set; }
         public string categoryDescription { get; set; }
 
@@ -26,7 +26,7 @@ namespace SalePoint.Models
                 {
                     productId = productObj.pro_id_produto,
                     productDescription = productObj.pro_ds_produto,
-                    productPrice = Math.Round(productObj.pro_ds_preco, 2),
+                    productPrice = Math.Round(productObj.pro_ds_preco, 2).ToString(),
                     categoryId = productObj.pro_id_categoria,
                     categoryDescription = CategoryModel.GetCategoryModel(productObj.pro_id_categoria).categoryDescription
                 };
@@ -48,7 +48,7 @@ namespace SalePoint.Models
                 {
                     productId = item.pro_id_produto,
                     productDescription = item.pro_ds_produto,
-                    productPrice = Math.Round(item.pro_ds_preco, 2),
+                    productPrice = Math.Round(item.pro_ds_preco, 2).ToString(),
                     categoryId = item.pro_id_categoria,
                     categoryDescription = item.categoria.cat_ds_categoria
                 });
@@ -61,7 +61,12 @@ namespace SalePoint.Models
         {
             sale_pointEntities db = new sale_pointEntities();
             db.produto.Where(x => x.pro_id_produto == id).ToList().ForEach(y => db.produto.Remove(y));
+            if (BuyingSessionModel.GetBuyingSession().sessionProductsListlist.Any(x => x.productId == id))
+            {
+                return false;
+            }
             return db.SaveChanges() > 0;
+
         }
 
         public static bool Save(ProductModel productObj)
@@ -71,7 +76,7 @@ namespace SalePoint.Models
             pro.pro_id_produto = productObj.productId;
             pro.pro_ds_produto = productObj.productDescription;
 
-            pro.pro_ds_preco = productObj.productPrice;
+            pro.pro_ds_preco = double.Parse(productObj.productPrice.Replace(".", ","));
             pro.pro_id_categoria = productObj.categoryId;
 
             if (pro.pro_id_produto > 0)
@@ -90,5 +95,5 @@ namespace SalePoint.Models
 
 
     }
-    
+
 }

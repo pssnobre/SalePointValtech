@@ -5,139 +5,147 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Products Session</h1>
+@using (Html.BeginForm("CloseBuyingSession", "Home", FormMethod.Post))
+{
 
-<div class="col-md-6">
-    <h3>Disponible Products</h3>
-    <table class="table table-responsive">
-        <tr>
-            <th>
-                Product Id
-            </th>
-            <th>
-                Product Description
-            </th>
-            <th>
-                Product Price
-            </th>
-            <th>
-                Category Description
-            </th>
-            <th></th>
-        </tr>
+    <h1>Products Session</h1>
 
-        @foreach (var item in Model.disponibleProductsList)
-        {
+    <div class="col-md-6">
+        <h3>Disponible Products</h3>
+        <table class="table table-responsive">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.categoryDescription)
-                </td>
-                <td>
-                    @Html.ActionLink("Add Product", "AddProduct", new { id = item.productId })
-                </td>
+                <th>
+                    Product Id
+                </th>
+                <th>
+                    Product Description
+                </th>
+                <th>
+                    Product Price
+                </th>
+                <th>
+                    Category Description
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model.disponibleProductsList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add Product", "AddProduct", new { id = item.productId })
+                    </td>
+                </tr>
+            }
 
-</div>
+        </table>
 
-<div class="col-md-6">
-    <h3>Buying Session</h3>
+    </div>
 
-    <table class="table table-responsive">
-        <tr>
-            <th>
-                Product Id
-            </th>
-            <th>
-                Product Description
-            </th>
-            <th>
-                Product Price
-            </th>
-            <th>
-                Category Description
-            </th>
-            <th></th>
-        </tr>
+    <div class="col-md-6">
+        <h3>Buying Session</h3>
 
-        @foreach (var item in Model.sessionProductsListlist)
-        {
+        <table class="table table-responsive">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.productPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.categoryDescription)
-                </td>
-                <td>
-                    @Html.ActionLink("Remove Product", "RemoveProduct", new { id = item.productId })
-                </td>
+                <th>
+                    Product Id
+                </th>
+                <th>
+                    Product Description
+                </th>
+                <th>
+                    Product Price
+                </th>
+                <th>
+                    Category Description
+                </th>
+                <th></th>
             </tr>
+
+            @foreach (var item in Model.sessionProductsListlist)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove Product", "RemoveProduct", new { id = item.productId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Total Value: @Html.DisplayFor(model => model.totalValue)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="divPayment col-md-3">
+            <h3 class="panel-title">Payment Method:</h3>
+            @Html.DropDownListFor(model => model.paymentId, (SelectList)ViewBag.PaymentMethodModel, "Selecione...", new { @class = "form-control ddlPayment", @required = "required" })
+            <p class="btnClose">
+                @*@Html.ActionLink("Close Buying Session", "CloseBuyingSession", new { id = Model.paymentId })*@
+                <button class="btn-success" type="submit">Close Buying Session</button>
+            </p>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <a style="cursor:pointer" class="btnFinish" onclick="finishBuying()">FINISH BUYING</a>
+            @*<button class="btn-success btnFinish" onclick="finishBuying()">FINISH BUYING</button>*@
+
+        </div>
+    </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.ddlPayment').removeAttr('required');
+            $('.divPayment').hide();
+            $('.btnClose').hide();
+            $('.btnFinish').show();
+            var msg = '@ViewBag.Script';
+            if (msg != '') {
+                alert(msg);
+            }
+        });
+
+        function finishBuying() {
+            $('.ddlPayment').attr('required', 'required');
+            $('.divPayment').show();
+            $('.btnClose').show();
+            $('.btnFinish').hide();
         }
+    </script>
 
-    </table>
-</div>
-
-<div class="clearfix"></div>
-
-<div class="row">
-    <div class="col-md-3">
-        <h4>Total Value: @Html.DisplayFor(model => model.totalValue)</h4>
-    </div>
-</div>
-<div class="row">
-    <div class="divPayment col-md-3">
-        <h3 class="panel-title">Payment Method:</h3>
-        @Html.DropDownListFor(model => model.paymentId, (SelectList)ViewBag.PaymentMethodModel, "Selecione...", new { @class = "form-control", @required = "required" })
-        <p class="btnClose">
-            @Html.ActionLink("Close Buying Session", "CloseBuyingSession")
-        </p>
-    </div>
-</div>
-<div class="clearfix"></div>
-<div class="row">
-    <div class="col-md-12">
-        <button class="btn-success btnFinish" onclick="finishBuying()">FINISH BUYING</button>
-        
-    </div>
-</div>
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.divPayment').hide();
-        $('.btnClose').hide();
-        $('.btnFinish').show();
-        var msg = '@ViewBag.Script';
-        if (msg != '') {
-            alert(msg);
-        }
-    });
-
-    function finishBuying() {
-        $('.divPayment').show();
-        $('.btnClose').show();
-        $('.btnFinish').hide();
-    }
-</script>
-
+}
