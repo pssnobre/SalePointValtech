@@ -33,7 +33,7 @@ namespace SalePoint.Controllers
         public ActionResult CloseBuyingSession()
         {
             BuyingSessionModel.CloseBuyingSession();
-            return Index("Session closed with sucess!");
+            return Index("Session closed with success!");
             
         }
     }
