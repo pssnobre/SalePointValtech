@@ -1,0 +1,49 @@
+Settings:
+
+Good morning. For the proposed solution I made some considerations. At first in relation to the data persistence, how to record products and categories. For this persistence was not requested for a database but I considered a more adequate solution for the creation of a simple database structure. I used the MySql database for a simplified version of the solution.
+
+For this connection to the database and mapping, used the version 5.0 of the Entity Framework, that follow in the project. It was used also a MySQL dll version 6.9.9  which is also attached and is already in the bin folder of the solution.
+
+In order to facilitate the installation I created a cloud database structure, already configured in the web.config file, however if you need to recreate a structure or execute the project in a local database, I am also sending an attachment to the simple script for creating the database tables. For this, it is necessary to change the data in the web.config file in the connection string, the values ??for the host, user, password and database name, to the database for the created. Or you can just use an already configured connection string that points to a simple cloud-based database. In any case, it is also attached to the script for creating the database tables.
+
+
+About the installation question, I had some doubts question. So I'm sending two project packages. One with a solution, which can be opened on visual studio or any other IDE, like classes with the project source codes that I believe is requested. But by this doubt I am also sending another package with the project compiled with the dlls, in case it is necessary to publish the system on some server for access, it is only necessary to publish the project on a server with IIS installed. The connections with the database I have already issued above, but I am also sending the source codes through a link in git that follows: https://github.com/pssnobre/SalePointValtech.git
+
+
+Please, any questions regarding the installation or configuration of the solution, please contact me. I hope I have been clear in the recommendations, but I am willing for any questions or clarifications.
+
+Thank you in advance and I await your return.
+
+Regards,
+
+Paulo Sergio.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+Configurações:
+
+Bom dia. Para a solução proposta fiz algumas considerações. A priori em relação à persistencia dos dados, como gravar produtos e categorias. Para essa persistencia não foi pedido no requisito mas considerei a solução mais adequada a criação de uma estrutura simples de banco de dados. Utilizei o banco de dados MySql para uma versão simplificada da solução.
+
+Para essa conexão com o banco de dados e mapeamento utilizei versão 5.0 do Entity Framework cuja dll segue no projeto. E também o a dll de conexão com o MySql versão 6.9.9 que também segue em anexo e já estão na pasta bin da solução.
+
+No intuito de facilitar a intalação criei uma estrutura do banco de dados em nuvem, já configurada no arquivo web.config, porém caso seja necessário recriar a estrutura ou executar o projeto em um banco de dados local, estou enviando também em anexo um script simples para a criação das tabelas do banco de dados. Para isso devem apenas ser alterados no arquivo web.config na string de conexão, os valores para o host, usuário, senha e nome do banco de dados, para o banco de dados que for criado. Ou pode apenas se utilizar a string de conexão já configurada que aponta bara um banco simples criado em nuvem. De qualquer forma, segue também em anexo o script para a criação das tabelas do banco de dados.
+
+
+Também fiquei na dúvida em relação ao quesito instalação que foi requerido. Por isso estou enviando dois pacotes do projeto. Um com a solution, que pode ser aberta no visual studio ou qualquer outra IDE, as classes com os códigos fonte do projeto que acredito que é o que serão avaliados. Mas por esta dúvida também estou enviando outro pacote com o projeto compilado com as dlls, para caso seja necessário publicar o sistema em algum servidor para acesso, é apenas necessário publicar o projeto em um servidor com o IIS instalado, as conexões com o banco de dados já foram mencionadas acima, mas também estou enviando os códigos fonte através de um link no git que está a seguir: https://github.com/pssnobre/SalePointValtech.git
+
+
+Por favor, qualquer dúvida em relação a instalação ou configuração da solução, podem entrar em contato. Espero ter sido claro nas recomendações, mas estou a disposição para qualquer dúvida ou esclarecimento. 
+
+Agradeço desde já e aguardo retorno.
+
+Att,
+
+Paulo Sérgio.
+
+
+
+
+
+
+
